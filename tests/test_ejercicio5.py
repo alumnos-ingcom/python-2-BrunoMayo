@@ -28,7 +28,7 @@ def test_string_balanceados_1():
     assert resultado == True
     assert isinstance(resultado, bool)
 
-def tes1t_string_balanceados_2():
+def test_string_balanceados_2():
     """
     Esta funcion testea un caso falso.
     Tambien chequea que el tipo de dato de retorno sea el que corresponde con la poscondicion
