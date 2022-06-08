@@ -20,20 +20,22 @@ def ordenar_secuencia(secuencia):
 
     try:        
         largo = len(secuencia)
-        if largo <= 1:
+        if largo <= 1: #Si la lista tiene largo 0 o 1 la devuelvo
             return secuencia
-        else:
-            pivot = secuencia[largo - 1]
-            mayor = []
-            menor = []
-            indice = 0
-            while indice < largo - 1:
-                if secuencia[indice] > pivot:
+        else: #Sino
+            pivot = secuencia[largo - 1] #Elige el ultimo valor de la lista
+            mayor = [] #Crea una lista vacia
+            menor = [] #Crea otra lista vacia
+            indice = 0 
+            while indice < largo - 1: #Recorre todos los elementos de la lista menos el ultimo que es el pivot
+                if secuencia[indice] > pivot: #Si el elemento es mayor al pivot lo agrega a la lista Mayor
                     mayor.append(secuencia[indice])
-                else:
+                else: #Si el elemento es menor o igual al pivot agrega el elemento a la lista Menor
                     menor.append(secuencia[indice])
                 indice = indice + 1
-        return ordenar_secuencia(menor) + [pivot] + ordenar_secuencia(mayor)
+        #Devuelve la suma de lo que retornallmar recursivamente a la lista menor 
+        #mas el pivot mas lo que retorna llamar recursivamente a la lista mayor
+        return ordenar_secuencia(menor) + [pivot] + ordenar_secuencia(mayor) 
     except TypeError as exc:
         print("La secuencia ingresada no esta compuesta unicamente por numeros")
     
@@ -48,8 +50,8 @@ def devolver_maximo(secuencia):
     Posconcicion: un numero
     """
 
-    secuencia_ordenada = ordenar_secuencia(secuencia)
-    return secuencia_ordenada[len(secuencia) - 1]
+    secuencia_ordenada = ordenar_secuencia(secuencia) #se ordena la secuencia de menor a mayor
+    return secuencia_ordenada[len(secuencia) - 1] #se devuelve el ultimo elemento que es el de mayor valor
 
 
 
@@ -60,8 +62,8 @@ def devolver_minimo(secuencia):
     Precondicion: una secuencia de numeros
     Posconcicion: un numero
     """
-    secuencia_ordenada = ordenar_secuencia(secuencia)
-    return secuencia_ordenada[0]    
+    secuencia_ordenada = ordenar_secuencia(secuencia) #se ordena la secuencia de menor a mayor
+    return secuencia_ordenada[0] #se devuelve el primer elemento que es el de mayor valor
 
 
 
@@ -75,10 +77,10 @@ def devolver_promedio(secuencia):
 
     total = 0
     indice = 0
-    while indice < len(secuencia):
-        total = total + secuencia[indice]
+    while indice < len(secuencia): #Se recorre la secuencia
+        total = total + secuencia[indice] #Se suman todos los elementos
         indice = indice + 1
-    return total / len(secuencia)
+    return total / len(secuencia) #Se retorna el promedio de la secuencia
     
 
 

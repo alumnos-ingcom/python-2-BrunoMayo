@@ -23,18 +23,19 @@ def string_balanceados(string, simbolo):
 
     try:
         while indice < len(string):
-            if string[indice] == simbolo[0]:
+            if string[indice] == simbolo[0]: #este if chequea si el caracter coincide con el simbolo de apertura
                 string_abiertos = string_abiertos + 1
-            elif string[indice] == simbolo[1]:
+            elif string[indice] == simbolo[1]: #este if chequea si el caracter coincide con el simbolo de cierre
                 string_cerrados = string_cerrados + 1
             indice = indice + 1
-
-            if string_cerrados > string_abiertos:
+             #Si en aglun momento hay mas simbolos de cierre que de apertura implica que se cerro uno antes de que el que
+             #le corresponde se abra, por ende no se cunple el balance
+            if string_cerrados > string_abiertos: 
                 resultado = False
                 break
             else:
                 pass
-        resultado = (string_abiertos == string_cerrados) and string_abiertos != 0
+        resultado = (string_abiertos == string_cerrados) and string_abiertos != 0 #Si hay la misma cantidad de simbolos de apertura y cierre devuelve True
         return resultado
     except TypeError as exc:
         print("Uno de los parametros no es del tiop de dato string")
